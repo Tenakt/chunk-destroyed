@@ -10,7 +10,8 @@
 
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/chunk-destroyer-tenakt"
+		"homepage": "https://modrinth.com/mod/chunk-destroyer-tenakt",
+		"sources": "https://github.com/Tenakt/chunk-destroyed.git"
 	},
 	"license": "MIT",
 	"icon": "assets/chunk-destroyer/icon.png",
