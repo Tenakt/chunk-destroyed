@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "chunk-destroyer",
+	"version": "${version}",
+	"name": "Chunk Destroyer",
+	"description": "A powerful tool that allows you to clear out entire chunks down to the bedrock using a simple server command. The /destroy <block> command instantly deletes all blocks within a single chunk. Ideal for quick clearing.",
+	"authors": [
+		"Tenakt",
+		"Black_Soul"
+
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/chunk-destroyer-tenakt"
+	},
+	"license": "MIT",
+	"icon": "assets/chunk-destroyer/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.tenakt.ChunkDestroyer"
+		],
+		"client": [
+			"net.tenakt.client.ChunkDestroyerClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "chunk-destroyer.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
