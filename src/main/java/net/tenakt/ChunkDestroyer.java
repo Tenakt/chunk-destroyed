@@ -22,6 +22,23 @@ public class ChunkDestroyer implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("destroy")
                     .then(CommandManager.argument("blockname", StringArgumentType.greedyString())
+                            // НАЧАЛО УМНОГО БЛОКА ПОДСКАЗОК
+                            .suggests((context, builder) -> {
+                                // Получаем то, что игрок УЖЕ успел ввести в чат (в нижнем регистре)
+                                String remaining = builder.getRemaining().toLowerCase();
+
+                                // Перебираем абсолютно все блоки в игре
+                                for (Identifier id : Registries.BLOCK.getIds()) {
+                                    String fullId = id.toString(); // Например: "minecraft:sand"
+
+                                    // Если ID блока содержит в себе то, что ввёл игрок — добавляем в подсказки
+                                    if (fullId.contains(remaining)) {
+                                        builder.suggest(fullId);
+                                    }
+                                }
+                                return builder.buildFuture();
+                            })
+                            // КОНЕЦ УМНОГО БЛОКА ПОДСКАЗОК
                             .executes(context -> {
                                 ServerPlayerEntity player = context.getSource().getPlayer();
                                 if (player == null) return 0;
@@ -70,7 +87,6 @@ public class ChunkDestroyer implements ModInitializer {
                                         }
                                     }
 
-                                    // Теперь здесь всё скомпилируется идеально!
                                     context.getSource().sendFeedback(() -> Text.literal("В текущем чанке удалено блоков: " + removedCount.get()), false);
                                     return 1;
                                 } else {
