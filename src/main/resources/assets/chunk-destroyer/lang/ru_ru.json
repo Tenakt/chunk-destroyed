@@ -1,0 +1,5 @@
+{
+  "command.chunkdestroyer.error.air": "Нельзя удалить воздух!",
+  "command.chunkdestroyer.error.not_found": "Блок с ID %s не найден!",
+  "command.chunkdestroyer.success": "В текущем чанке удалено блоков: %d"
+}

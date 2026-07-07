@@ -1,0 +1,5 @@
+{
+  "command.chunkdestroyer.error.air": "You cannot remove air!",
+  "command.chunkdestroyer.error.not_found": "Block ID %s not found!",
+  "command.chunkdestroyer.success": "Removed %d blocks in the current chunk."
+}

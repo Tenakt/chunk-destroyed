@@ -13,6 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChunkDestroyer implements ModInitializer {
@@ -22,23 +23,18 @@ public class ChunkDestroyer implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("destroy")
                     .then(CommandManager.argument("blockname", StringArgumentType.greedyString())
-                            // НАЧАЛО УМНОГО БЛОКА ПОДСКАЗОК
                             .suggests((context, builder) -> {
-                                // Получаем то, что игрок УЖЕ успел ввести в чат (в нижнем регистре)
                                 String remaining = builder.getRemaining().toLowerCase();
 
-                                // Перебираем абсолютно все блоки в игре
                                 for (Identifier id : Registries.BLOCK.getIds()) {
-                                    String fullId = id.toString(); // Например: "minecraft:sand"
+                                    String fullId = id.toString();
 
-                                    // Если ID блока содержит в себе то, что ввёл игрок — добавляем в подсказки
                                     if (fullId.contains(remaining)) {
                                         builder.suggest(fullId);
                                     }
                                 }
                                 return builder.buildFuture();
                             })
-                            // КОНЕЦ УМНОГО БЛОКА ПОДСКАЗОК
                             .executes(context -> {
                                 ServerPlayerEntity player = context.getSource().getPlayer();
                                 if (player == null) return 0;
@@ -54,13 +50,13 @@ public class ChunkDestroyer implements ModInitializer {
                                     Block targetBlock = Registries.BLOCK.get(id);
 
                                     if (targetBlock == Blocks.AIR) {
-                                        context.getSource().sendError(Text.literal("Нельзя удалить воздух!"));
+                                        // Используем ключ перевода для воздуха
+                                        context.getSource().sendError(Text.translatable("command.chunkdestroyer.error.air"));
                                         return 0;
                                     }
 
-                                    ServerWorld world = player.getServerWorld();
+                                    ServerWorld world = context.getSource().getWorld();
 
-                                    // Получаем текущий чанк
                                     ChunkPos chunkPos = new ChunkPos(player.getBlockPos());
 
                                     int minX = chunkPos.getStartX();
@@ -68,29 +64,32 @@ public class ChunkDestroyer implements ModInitializer {
                                     int minZ = chunkPos.getStartZ();
                                     int maxZ = chunkPos.getEndZ();
 
-                                    int startY = world.getTopY();
                                     int bottomWorldY = world.getBottomY();
+                                    int startY = bottomWorldY + world.getHeight() - 1;
 
-                                    // Используем AtomicInteger вместо обычного int, чтобы Java не ругалась в лямбде
                                     AtomicInteger removedCount = new AtomicInteger(0);
+
+                                    BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
                                     for (int x = minX; x <= maxX; x++) {
                                         for (int z = minZ; z <= maxZ; z++) {
                                             for (int y = startY; y >= bottomWorldY; y--) {
-                                                BlockPos pos = new BlockPos(x, y, z);
+                                                mutablePos.set(x, y, z);
 
-                                                if (world.getBlockState(pos).isOf(targetBlock)) {
-                                                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                                                    removedCount.incrementAndGet(); // Безопасно увеличиваем счётчик
+                                                if (world.getBlockState(mutablePos).isOf(targetBlock)) {
+                                                    world.setBlockState(mutablePos, Blocks.AIR.getDefaultState());
+                                                    removedCount.incrementAndGet();
                                                 }
                                             }
                                         }
                                     }
 
-                                    context.getSource().sendFeedback(() -> Text.literal("В текущем чанке удалено блоков: " + removedCount.get()), false);
+                                    // Передаем количество удаленных блоков в качестве аргумента %d
+                                    context.getSource().sendFeedback(() -> Text.translatable("command.chunkdestroyer.success", removedCount.get()), false);
                                     return 1;
                                 } else {
-                                    context.getSource().sendError(Text.literal("Блок с ID " + text + " не найден!"));
+                                    // Передаем ненайденный ID в качестве аргумента %s
+                                    context.getSource().sendError(Text.translatable("command.chunkdestroyer.error.not_found", text));
                                     return 0;
                                 }
                             })));
