@@ -3,7 +3,7 @@
 	"id": "chunk-destroyer",
 	"version": "${version}",
 	"name": "Chunk Destroyer",
-	"description": "A powerful tool that allows you to clear out entire chunks down to the bedrock using a simple server command. The /destroy <block> command instantly deletes all blocks within a single chunk. Ideal for quick clearing.",
+	"description": "The /destroy <block> command instantly deletes all blocks within a single chunk. Ideal for quick clearing.",
 	"authors": [
 		"Tenakt",
 		"Black_Soul"
