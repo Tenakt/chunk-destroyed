@@ -7,9 +7,12 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	//Owo lib
+	// Owo lib
 	maven { url 'https://maven.wispforest.io/releases/' }
 	maven { url 'https://jitpack.io' }
+
+	// Mod Menu
+	maven{ url "https://api.modrinth.com/maven"}
 }
 
 loom {
@@ -32,9 +35,13 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	//Owo lib
+	// Owo lib
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
+	annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
+
+	// Mod Menu
+	modImplementation "maven.modrinth:modmenu:17.0.0"
 }
 
 processResources {
