@@ -1,5 +1,22 @@
 {
   "command.chunkdestroyer.error.air": "You cannot remove air!",
   "command.chunkdestroyer.error.not_found": "Block ID %s not found!",
-  "command.chunkdestroyer.success": "Removed %d blocks in the current chunk."
+  "command.chunkdestroyer.success": "Removed %d blocks in the current chunk.",
+
+  "text.config.my-config.title": "Chunk Destroyer Settings",
+
+  "text.config.my-config.section.someSection": "Additional settings",
+
+  "text.config.my-config.option.firstOption": "First parameter",
+  "text.config.my-config.option.anIntOption": "Numeric parameter",
+  "text.config.my-config.option.aBooleanToggle": "Switch",
+
+  "text.config.my-config.option.anEnumOption": "Dropdown list",
+  "text.config.my-config.value.anEnumOption.A_CHOICE": "Option A",
+  "text.config.my-config.value.anEnumOption.ANOTHER_CHOICE": "Another option",
+
+  "text.config.my-config.option.someLaterOption": "One more field",
+
+  "text.config.my-config.option.nestedObject.aNestedValue": "Nested button",
+  "text.config.my-config.option.nestedObject.anotherNestedValue": "Nested number"
 }
