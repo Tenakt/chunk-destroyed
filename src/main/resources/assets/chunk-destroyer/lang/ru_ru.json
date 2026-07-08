@@ -1,5 +1,22 @@
 {
   "command.chunkdestroyer.error.air": "Нельзя удалить воздух!",
   "command.chunkdestroyer.error.not_found": "Блок с ID %s не найден!",
-  "command.chunkdestroyer.success": "В текущем чанке удалено блоков: %d"
+  "command.chunkdestroyer.success": "В текущем чанке удалено блоков: %d",
+
+  "text.config.my-config.title": "Настройки Chunk Destroyer",
+
+  "text.config.my-config.section.someSection": "Дополнительные настройки",
+
+  "text.config.my-config.option.firstOption": "Первый параметр",
+  "text.config.my-config.option.anIntOption": "Числовой параметр",
+  "text.config.my-config.option.aBooleanToggle": "Переключатель",
+
+  "text.config.my-config.option.anEnumOption": "Выпадающий список",
+  "text.config.my-config.value.anEnumOption.A_CHOICE": "Вариант А",
+  "text.config.my-config.value.anEnumOption.ANOTHER_CHOICE": "Другой вариант",
+
+  "text.config.my-config.option.someLaterOption": "Еще одно поле",
+
+  "text.config.my-config.option.nestedObject.aNestedValue": "Вложенная кнопка",
+  "text.config.my-config.option.nestedObject.anotherNestedValue": "Вложенное число"
 }
