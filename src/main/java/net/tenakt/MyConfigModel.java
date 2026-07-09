@@ -1,9 +1,6 @@
 package net.tenakt;
 
-import io.wispforest.owo.config.annotation.Config;
-import io.wispforest.owo.config.annotation.Modmenu;
-import io.wispforest.owo.config.annotation.Nest;
-import io.wispforest.owo.config.annotation.SectionHeader;
+import io.wispforest.owo.config.annotation.*;
 
 @Modmenu(modId = "chunk-destroyer")
 @Config(name = "my-config", wrapperName = "MyConfig")
@@ -28,4 +25,12 @@ public class MyConfigModel {
         public int anotherNestedValue = 42;
     }
 
+    @RegexConstraint("[a-z]{1,10}")
+    public String aStringOption = "matched";
+
+    @RangeConstraint(min = 10,max = 20)
+    public int anIntOption2 = 16;
+
+    @RangeConstraint(min = 5.5d,max = 11.3d)
+    public double aDoubleOption = 7.5;
 }
