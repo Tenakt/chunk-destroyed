@@ -2,6 +2,8 @@ package net.tenakt;
 
 import io.wispforest.owo.config.annotation.*;
 
+import java.util.ArrayList;
+
 @Modmenu(modId = "chunk-destroyer")
 @Config(name = "my-config", wrapperName = "MyConfig")
 public class MyConfigModel {
@@ -33,4 +35,7 @@ public class MyConfigModel {
 
     @RangeConstraint(min = 5.5d,max = 11.3d)
     public double aDoubleOption = 7.5;
+
+    @PredicateConstraint("predicateFunction")
+    public List<String> someOption = new ArrayList<>(List.of("1"))
 }
