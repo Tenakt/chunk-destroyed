@@ -3,6 +3,7 @@ package net.tenakt;
 import io.wispforest.owo.config.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Modmenu(modId = "chunk-destroyer")
 @Config(name = "my-config", wrapperName = "MyConfig")
@@ -27,15 +28,7 @@ public class MyConfigModel {
         public int anotherNestedValue = 42;
     }
 
-    @RegexConstraint("[a-z]{1,10}")
-    public String aStringOption = "matched";
+    @RangeConstraint(min = 1,max = 128)
+    public int destroyRadius = 16;
 
-    @RangeConstraint(min = 10,max = 20)
-    public int anIntOption2 = 16;
-
-    @RangeConstraint(min = 5.5d,max = 11.3d)
-    public double aDoubleOption = 7.5;
-
-    @PredicateConstraint("predicateFunction")
-    public List<String> someOption = new ArrayList<>(List.of("1"))
 }

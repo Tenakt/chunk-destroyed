@@ -50,25 +50,28 @@ public class ChunkDestroyer implements ModInitializer {
                                     Block targetBlock = Registries.BLOCK.get(id);
 
                                     if (targetBlock == Blocks.AIR) {
-                                        // Используем ключ перевода для воздуха
                                         context.getSource().sendError(Text.translatable("command.chunkdestroyer.error.air"));
                                         return 0;
                                     }
 
                                     ServerWorld world = context.getSource().getWorld();
 
-                                    ChunkPos chunkPos = new ChunkPos(player.getBlockPos());
+                                    BlockPos playerPos = player.getBlockPos();
 
-                                    int minX = chunkPos.getStartX();
-                                    int maxX = chunkPos.getEndX();
-                                    int minZ = chunkPos.getStartZ();
-                                    int maxZ = chunkPos.getEndZ();
+                                    int radius = MyModInitializer.CONFIG.destroyRadius();
+
+                                    int halfRadius = radius / 2;
+
+                                    int minX = playerPos.getX() - halfRadius;
+                                    int maxX = playerPos.getX() + (radius - halfRadius - 1);
+
+                                    int minZ = playerPos.getZ() - halfRadius;
+                                    int maxZ = playerPos.getZ() + (radius - halfRadius - 1);
 
                                     int bottomWorldY = world.getBottomY();
                                     int startY = bottomWorldY + world.getHeight() - 1;
 
                                     AtomicInteger removedCount = new AtomicInteger(0);
-
                                     BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
                                     for (int x = minX; x <= maxX; x++) {
@@ -84,11 +87,9 @@ public class ChunkDestroyer implements ModInitializer {
                                         }
                                     }
 
-                                    // Передаем количество удаленных блоков в качестве аргумента %d
                                     context.getSource().sendFeedback(() -> Text.translatable("command.chunkdestroyer.success", removedCount.get()), false);
                                     return 1;
                                 } else {
-                                    // Передаем ненайденный ID в качестве аргумента %s
                                     context.getSource().sendError(Text.translatable("command.chunkdestroyer.error.not_found", text));
                                     return 0;
                                 }

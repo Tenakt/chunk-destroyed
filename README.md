@@ -1,4 +1,4 @@
-# Funny Mod
+# Chunk Destroyer
 
 ## Setup
 
