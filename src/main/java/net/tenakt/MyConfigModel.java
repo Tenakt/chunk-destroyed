@@ -12,5 +12,11 @@ public class MyConfigModel {
     @RangeConstraint(min = 1,max = 128)
     public int destroyRadius = 16;
 
+    @RangeConstraint(min = 1,max = 384)
+    public int HeightUp = 384;
+
+    @RangeConstraint(min = 1,max = 384)
+    public int HeightDown = 384;
+
 
 }

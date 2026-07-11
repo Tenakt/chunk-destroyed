@@ -68,15 +68,24 @@ public class ChunkDestroyer implements ModInitializer {
                                     int minZ = playerPos.getZ() - halfRadius;
                                     int maxZ = playerPos.getZ() + (radius - halfRadius - 1);
 
-                                    int bottomWorldY = world.getBottomY();
-                                    int startY = bottomWorldY + world.getHeight() - 1;
+                                    int heightUp = MyModInitializer.CONFIG.HeightUp();
+                                    int heightDown = MyModInitializer.CONFIG.HeightDown();
+
+                                    int minY = playerPos.getY() - heightDown;
+                                    int maxY = playerPos.getY() + heightUp;
+
+                                    int worldMinY = world.getBottomY();
+                                    int worldMaxY = world.getBottomY() + world.getHeight() - 1;
+
+                                    if (minY < worldMinY) minY = worldMinY;
+                                    if (maxY > worldMaxY) maxY = worldMaxY;
 
                                     AtomicInteger removedCount = new AtomicInteger(0);
                                     BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
                                     for (int x = minX; x <= maxX; x++) {
                                         for (int z = minZ; z <= maxZ; z++) {
-                                            for (int y = startY; y >= bottomWorldY; y--) {
+                                            for (int y = maxY; y >= minY; y--) {
                                                 mutablePos.set(x, y, z);
 
                                                 if (world.getBlockState(mutablePos).isOf(targetBlock)) {
