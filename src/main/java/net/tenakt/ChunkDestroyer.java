@@ -68,8 +68,8 @@ public class ChunkDestroyer implements ModInitializer {
                                     int minZ = playerPos.getZ() - halfRadius;
                                     int maxZ = playerPos.getZ() + (radius - halfRadius - 1);
 
-                                    int heightUp = MyModInitializer.CONFIG.HeightUp();
-                                    int heightDown = MyModInitializer.CONFIG.HeightDown();
+                                    int heightUp = MyModInitializer.CONFIG.heightUp();
+                                    int heightDown = MyModInitializer.CONFIG.heightDown();
 
                                     int minY = playerPos.getY() - heightDown;
                                     int maxY = playerPos.getY() + heightUp;

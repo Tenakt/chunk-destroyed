@@ -4,19 +4,12 @@
   "command.chunkdestroyer.success": "Removed %d blocks in the current chunk.",
 
   "text.config.my-config.title": "Chunk Destroyer Settings",
+  "text.config.my-config.option.destroyRadius": "Destroy Radius (in blocks)",
+  "text.config.my-config.option.heightUp": "Destroy Height UP",
+  "text.config.my-config.option.heightDown": "Destroy Height DOWN",
 
-  "text.config.my-config.section.someSection": "Additional settings",
+  "text.config.my-config.option.destroyRadius.tooltip": "Horizontal clearing area around the player.",
+  "text.config.my-config.option.heightUp.tooltip": "How many blocks will be cleared above your head.",
+  "text.config.my-config.option.heightDown.tooltip": "How many blocks will be cleared under your feet."
 
-  "text.config.my-config.option.firstOption": "First parameter",
-  "text.config.my-config.option.anIntOption": "Numeric parameter",
-  "text.config.my-config.option.aBooleanToggle": "Switch",
-
-  "text.config.my-config.option.anEnumOption": "Dropdown list",
-  "text.config.my-config.value.anEnumOption.A_CHOICE": "Option A",
-  "text.config.my-config.value.anEnumOption.ANOTHER_CHOICE": "Another option",
-
-  "text.config.my-config.option.someLaterOption": "One more field",
-
-  "text.config.my-config.option.nestedObject.aNestedValue": "Nested button",
-  "text.config.my-config.option.nestedObject.anotherNestedValue": "Nested number"
 }
