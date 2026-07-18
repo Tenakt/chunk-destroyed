@@ -4,13 +4,15 @@
   "command.chunkdestroyer.success": "В текущем чанке удалено блоков: %d",
 
   "text.config.my-config.title": "Настройки Chunk Destroyer",
-  "text.config.my-config.option.destroyRadius": "Радиус удаления (в блоках)",
+  "text.config.my-config.option.destroyRadius": "Радиус удаления",
   "text.config.my-config.option.heightUp": "Удалять блоков вверх",
   "text.config.my-config.option.heightDown": "Удалять блоков вниз",
 
   "text.config.my-config.option.destroyRadius.tooltip": "Зона очистки по горизонтали вокруг игрока",
   "text.config.my-config.option.heightUp.tooltip": "Сколько слоев блоков будет очищено над головой игрока",
-  "text.config.my-config.option.heightDown.tooltip": "Сколько слоев блоков будет очищено под ногами игрока"
+  "text.config.my-config.option.heightDown.tooltip": "Сколько слоев блоков будет очищено под ногами игрока",
+
+  "text.config.my-config.section.general": "Основное"
 
 
 

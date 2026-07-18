@@ -4,12 +4,14 @@
   "command.chunkdestroyer.success": "Removed %d blocks in the current chunk.",
 
   "text.config.my-config.title": "Chunk Destroyer Settings",
-  "text.config.my-config.option.destroyRadius": "Destroy Radius (in blocks)",
+  "text.config.my-config.option.destroyRadius": "Destroy Radius",
   "text.config.my-config.option.heightUp": "Destroy Height UP",
   "text.config.my-config.option.heightDown": "Destroy Height DOWN",
 
   "text.config.my-config.option.destroyRadius.tooltip": "Horizontal clearing area around the player.",
   "text.config.my-config.option.heightUp.tooltip": "How many blocks will be cleared above your head.",
-  "text.config.my-config.option.heightDown.tooltip": "How many blocks will be cleared under your feet."
+  "text.config.my-config.option.heightDown.tooltip": "How many blocks will be cleared under your feet.",
+
+  "text.config.my-config.section.general": "general"
 
 }
