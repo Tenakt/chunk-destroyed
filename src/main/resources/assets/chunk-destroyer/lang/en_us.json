@@ -5,8 +5,8 @@
 
   "text.config.my-config.title": "Chunk Destroyer Settings",
   "text.config.my-config.option.destroyRadius": "Destroy Radius",
-  "text.config.my-config.option.heightUp": "Destroy Height UP",
-  "text.config.my-config.option.heightDown": "Destroy Height DOWN",
+  "text.config.my-config.option.heightUp": "Destroy Height Up",
+  "text.config.my-config.option.heightDown": "Destroy Height Down",
 
   "text.config.my-config.option.destroyRadius.tooltip": "Horizontal clearing area around the player.",
   "text.config.my-config.option.heightUp.tooltip": "How many blocks will be cleared above your head.",

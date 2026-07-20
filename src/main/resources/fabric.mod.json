@@ -24,7 +24,7 @@
 			"net.tenakt.MyModInitializer"
 		],
 		"client": [
-			"net.tenakt.client.ChunkDestroyerClient"
+			"net.tenakt.client.MyModClientInitializer"
 		]
 	},
 	"mixins": [
