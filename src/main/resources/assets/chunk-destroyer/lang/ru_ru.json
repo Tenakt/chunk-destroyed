@@ -12,7 +12,10 @@
   "text.config.my-config.option.heightUp.tooltip": "Сколько слоев блоков будет очищено над головой игрока",
   "text.config.my-config.option.heightDown.tooltip": "Сколько слоев блоков будет очищено под ногами игрока",
 
-  "text.config.my-config.section.general": "Основное"
+  "text.config.my-config.section.general": "Основное",
+
+  "key.category.minecraft.category.chunk-destroyer": "Chunk Destroyer",
+  "key.chunk-destroyer.open_config": "Открыть настройки"
 
 
 

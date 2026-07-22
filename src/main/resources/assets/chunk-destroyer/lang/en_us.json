@@ -12,6 +12,9 @@
   "text.config.my-config.option.heightUp.tooltip": "How many blocks will be cleared above your head.",
   "text.config.my-config.option.heightDown.tooltip": "How many blocks will be cleared under your feet.",
 
-  "text.config.my-config.section.general": "general"
+  "text.config.my-config.section.general": "general",
+
+  "key.category.minecraft.category.chunk-destroyer": "Chunk Destroyer",
+  "key.chunk-destroyer.open_config":"Settings"
 
 }

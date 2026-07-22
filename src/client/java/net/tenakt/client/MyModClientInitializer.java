@@ -19,7 +19,7 @@ public class MyModClientInitializer implements ClientModInitializer {
                 "key.chunk-destroyer.open_config",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_H,
-                KeyBinding.Category.create(Identifier.of("key.categories.misc"))
+                KeyBinding.Category.create(Identifier.of("category.chunk-destroyer"))
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {

@@ -1,36 +1,106 @@
 <owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20/owo-ui.xsd">
+
     <components>
         <flow-layout direction="vertical">
-            <children> <!--(1)-->
-                <flow-layout direction="vertical"> <!--(2)-->
+            <children>
+
+                <flow-layout direction="vertical">
                     <children>
-                        <button id="the-button"> <!--(3)-->
-                            <text>A Button</text> <!--(6)-->
-                        </button>
+                        <label>
+                            <text>Настройки Chunk Destroyer</text>
+                            <margins>
+                                <bottom>15</bottom>
+                            </margins>
+                        </label>
+
+                        <label>
+                            <text>Радиус удаления:</text>
+                            <margins>
+                                <bottom>5</bottom>
+                            </margins>
+                        </label>
+
+                        <text-box id="radius-input">
+                            <sizing>
+                                <vertical method="fixed">20</vertical>
+                                <horizontal method="fixed">80</horizontal>
+                            </sizing>
+                            <margins>
+                                <bottom>15</bottom>
+                            </margins>
+                        </text-box>
+
+                        <label>
+                            <text>Удалять блоков вверх:</text>
+                            <margins>
+                                <bottom>5</bottom>
+                            </margins>
+                        </label>
+
+                        <text-box id="up-input">
+                            <sizing>
+                                <vertical method="fixed">20</vertical>
+                                <horizontal method="fixed">80</horizontal>
+                            </sizing>
+                            <margins>
+                                <bottom>15</bottom>
+                            </margins>
+                        </text-box>
+
+                        <label>
+                            <text>Удалять блоков вниз:</text>
+                            <margins>
+                                <bottom>5</bottom>
+                            </margins>
+                        </label>
+
+                        <text-box id="down-input">
+                            <sizing>
+                                <vertical method="fixed">20</vertical>
+                                <horizontal method="fixed">80</horizontal>
+                            </sizing>
+                            <margins>
+                                <bottom>15</bottom>
+                            </margins>
+                        </text-box>
+
                     </children>
 
-                    <horizontal-alignment>center</horizontal-alignment>
-                    <vertical-alignment>center</vertical-alignment>
+                    <horizontal-alignment>left</horizontal-alignment>
 
-                    <!--(4)-->
-                    <padding>
-                        <all>10</all>
-                    </padding>
+                    <sizing>
+                        <horizontal method="fill">100</horizontal>
+                    </sizing>
 
-                    <surface>
-                        <panel dark="true"/>
-                    </surface>
+                    <margins>
+                        <bottom>25</bottom>
+                    </margins>
                 </flow-layout>
+
+                <button id="save-button">
+
+                    <text>Сохранить и закрыть</text>
+
+                    <sizing>
+                        <vertical method="fixed">20</vertical>
+                        <horizontal method="fixed">150</horizontal>
+                    </sizing>
+
+                </button>
+
             </children>
 
             <vertical-alignment>center</vertical-alignment>
             <horizontal-alignment>center</horizontal-alignment>
 
-            <!--(5)-->
             <surface>
                 <vanilla-translucent/>
             </surface>
+
+            <padding>
+                <all>20</all>
+            </padding>
         </flow-layout>
     </components>
 </owo-ui>
