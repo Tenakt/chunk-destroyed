@@ -3,6 +3,8 @@ package net.tenakt;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
@@ -13,13 +15,33 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.tenakt.network.ConfigSyncPayload;
 
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChunkDestroyer implements ModInitializer {
+    public record PlayerSettings(int radius, int heightUp, int heightDown){}
+
+    public static final Map<UUID, PlayerSettings> PLAYER_SETTINGS = new ConcurrentHashMap<>();
+
+    public static final PlayerSettings DEFEAULT_SETTINGS = new PlayerSettings(16,384,384);
 
     @Override
     public void onInitialize() {
+        // Регистрируем пакет (как мы делали в прошлый раз)
+        PayloadTypeRegistry.playC2S().register(ConfigSyncPayload.ID, ConfigSyncPayload.CODEC);
+
+        // Принимаем пакет и сохраняем настройки ЛИЧНО для этого игрока
+        ServerPlayNetworking.registerGlobalReceiver(ConfigSyncPayload.ID, (payload, context) -> {
+            context.server().execute(() -> {
+                ServerPlayerEntity player = context.player();
+                // Записываем настройки в словарь по UUID игрока
+                PLAYER_SETTINGS.put(player.getUuid(), new PlayerSettings(payload.radius(), payload.up(), payload.down()));
+            });
+        });
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("destroy")
                     .then(CommandManager.argument("blockname", StringArgumentType.greedyString())
@@ -55,8 +77,9 @@ public class ChunkDestroyer implements ModInitializer {
                                     }
 
                                     ServerWorld world = context.getSource().getWorld();
-
                                     BlockPos playerPos = player.getBlockPos();
+
+                                    PlayerSettings settings = PLAYER_SETTINGS.getOrDefault(player.getUuid(),DEFEAULT_SETTINGS);
 
                                     int radius = MyModInitializer.CONFIG.destroyRadius();
 

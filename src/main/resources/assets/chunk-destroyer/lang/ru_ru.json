@@ -15,7 +15,13 @@
   "text.config.my-config.section.general": "Основное",
 
   "key.category.minecraft.category.chunk-destroyer": "Chunk Destroyer",
-  "key.chunk-destroyer.open_config": "Открыть настройки"
+  "key.chunk-destroyer.open_config": "Открыть настройки",
+
+  "gui.chunk-destroyer.title": "Настройки Chunk Destroyer",
+  "gui.chunk-destroyer.radius": "Радиус удаления",
+  "gui.chunk-destroyer.up": "Удалять блоков вверх",
+  "gui.chunk-destroyer.down": "Удалять блоков вниз",
+  "gui.chunk-destroyer.save": "Сохранить и закрыть"
 
 
 

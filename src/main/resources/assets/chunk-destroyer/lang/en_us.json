@@ -15,6 +15,12 @@
   "text.config.my-config.section.general": "general",
 
   "key.category.minecraft.category.chunk-destroyer": "Chunk Destroyer",
-  "key.chunk-destroyer.open_config":"Settings"
+  "key.chunk-destroyer.open_config":"Settings",
+
+  "gui.chunk-destroyer.title": "Chunk Destroyer Settings",
+  "gui.chunk-destroyer.radius": "Destroy Radius",
+  "gui.chunk-destroyer.up": "Destroy Height Up",
+  "gui.chunk-destroyer.down": "Destroy Height Down",
+  "gui.chunk-destroyer.save": "Save & Close"
 
 }
