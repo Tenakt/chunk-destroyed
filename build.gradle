@@ -1,6 +1,7 @@
 plugins {
 	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
+    id "org.jetbrains.kotlin.kapt" version '2.4.10'
 }
 
 version = project.mod_version
@@ -13,6 +14,7 @@ repositories {
 
 	// Mod Menu
 	maven{ url "https://api.modrinth.com/maven"}
+    mavenCentral()
 }
 
 loom {
@@ -42,6 +44,7 @@ dependencies {
 
 	// Mod Menu
 	modImplementation "maven.modrinth:modmenu:17.0.0"
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
 
 processResources {
