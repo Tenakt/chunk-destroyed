@@ -17,10 +17,14 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.tenakt.ChunkDestroyer"
+			{
+				"adapter": "kotlin",
+				"value": "net.tenakt.ChunkDestroyer"
+			},
+			"net.tenakt.MyModInitializer"
 		],
 		"client": [
-			"net.tenakt.client.ChunkDestroyerClient"
+			"net.tenakt.client.MyModClientInitializer"
 		]
 	},
 	"mixins": [
@@ -34,6 +38,7 @@
 		"minecraft": ">=1.21.11",
 		"java": ">=21",
 		"fabric-api": "*",
-		"owo": ">=0.13.0"
+		"owo": ">=0.13.0",
+		"fabric-language-kotlin": ">=1.13.12"
 	}
 }
